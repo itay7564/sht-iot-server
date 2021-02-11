@@ -1,0 +1,14 @@
+[Unit]
+Description=Shtainberg IoT Node.js Server
+After=network.target
+
+[Service]
+User=${SERVICE_USER}
+Group=${SERVICE_GROUP}
+Restart=always
+KillSignal=SIGQUIT
+WorkingDirectory=/opt/sht-iot/
+ExecStart=node /opt/sht-iot/sht-iot-server.js
+
+[Install]
+WantedBy=multi-user.target

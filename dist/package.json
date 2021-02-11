@@ -1,0 +1,31 @@
+{
+  "name": "iot-server",
+  "version": "0.0.0",
+  "description": "IotServer",
+  "main": "app.js",
+  "author": "",
+  "dependencies": {
+    "chart.js": "^2.9.4",
+    "react": "^16.14.0",
+    "react-app": "^1.1.2",
+    "react-chartjs-2": "^2.10.0",
+    "react-dom": "^16.14.0",
+    "socket.io": "^2.3.0",
+    "socket.io-client": "^2.3.1"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.12.1",
+    "@babel/core": "^7.12.3",
+    "@babel/preset-env": "^7.12.1",
+    "@babel/preset-react": "^7.12.1",
+    "babel-loader": "^8.1.0",
+    "babel-preset-es2020": "^1.0.2",
+    "webpack": "^4.44.2",
+    "webpack-cli": "^3.3.12"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "license": "ISC"
+}
