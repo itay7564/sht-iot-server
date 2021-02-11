@@ -272,7 +272,7 @@ function findDevice(id) {
     return -1; //device not found
 }
 
-//Mockup json device array
+//Example json device array
 /*
 let devices =
     [
