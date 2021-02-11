@@ -76,7 +76,6 @@ deviceIO.on('connection', (client) => {
     let device = { buttons: [], timers: [] }; //initialize arrays to avoid "undefined" errors
     let receivedInfo = false;
     let index = -1;
-    client.emit('test', { test1: "hello", arr: [{ el1: "1" }, { el2: "2" }] }, 'test2'); //test
     client.on('deviceInfo', (info) => {
         device.name = info.name;
         device.allowTimers = info.allowTimers;
