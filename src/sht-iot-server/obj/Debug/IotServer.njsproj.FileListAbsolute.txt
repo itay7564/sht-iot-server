@@ -1,0 +1,2 @@
+C:\Users\22ita\source\repos\IotServer\IotServer\obj\Debug\IotServer.njsproj.CoreCompileInputs.cache
+C:\Users\22ita\source\repos\IotServer\IotServer\bin\Microsoft.NodejsTools.WebRole.dll

@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.779
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9092AA53-FB77-4645-B42D-1CCCA6BD08BD}") = "sht-iot-server", "sht-iot-server\sht-iot-server.njsproj", "{38EC1138-B880-4AA1-A908-8A512D9A412A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{38EC1138-B880-4AA1-A908-8A512D9A412A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{38EC1138-B880-4AA1-A908-8A512D9A412A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{38EC1138-B880-4AA1-A908-8A512D9A412A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{38EC1138-B880-4AA1-A908-8A512D9A412A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {EBD1BEAA-72D8-4F89-9E19-C2C90EAA2B0B}
+	EndGlobalSection
+EndGlobal

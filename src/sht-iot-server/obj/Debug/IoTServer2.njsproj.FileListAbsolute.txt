@@ -1,0 +1,3 @@
+C:\Users\22ita\source\repos\IoTServer2\IotServer\obj\Debug\IoTServer2.njsprojAssemblyReference.cache
+C:\Users\22ita\source\repos\IoTServer2\IotServer\obj\Debug\IoTServer2.njsproj.CoreCompileInputs.cache
+C:\Users\22ita\source\repos\IoTServer2\IotServer\bin\Microsoft.NodejsTools.WebRole.dll
