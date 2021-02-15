@@ -23,7 +23,7 @@ The server is using a free DDNS service called duckDNS, which allows having a co
 
 
 
-#Server Flowchart
+# Server Flowchart
 ![This diagram shows the flow of the server](https://github.com/itay7564/sht-iot-server/blob/main/connection%20diagram.jpg?raw=true)
 
 
