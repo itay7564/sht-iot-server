@@ -21,6 +21,13 @@ Each of these three sides is available on a different TCP port, selected on inst
 
 The server is using a free DDNS service called duckDNS, which allows having a constant domain name for the changing ip address of the home router.
 
+
+
+#Server Flowchart
+![This diagram shows the flow of the server](https://github.com/itay7564/sht-iot-server/blob/main/connection%20diagram.jpg?raw=true)
+
+
+
 # Requirements
 * A 24/7 working computer with a debian based linux distro installed. I use a raspberry pi zero W.
 * Root access.
@@ -47,9 +54,6 @@ To generate a new client certificate for a device, run:
 `sudo sht-iot add-device`
 To move a file to the updates folder, so it will be used to update a device through the updates server, use:
 `sudo sht-iot update PATH_TO_FILE`
-
-![This diagram shows the flow of the server](https://github.com/itay7564/sht-iot-server/blob/main/connection%20diagram.jpg?raw=true)
-
 
 # Software used:
 The following programs will be installed after running `install.sh` (if they are not already installed):
