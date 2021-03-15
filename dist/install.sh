@@ -8,13 +8,8 @@ if [ "$(whoami)" != 'root' ]
 fi
 
 apt update -q
-echo "Installing Snapd..."
-apt install snapd -q
-snap install core
-snap refresh core 
-echo "Done."
 echo "Installing Certbot..."
-snap install certbot --classic 
+apt-get install certbot
 echo "Done."
 echo "Installing nginx..."
 apt install nginx
