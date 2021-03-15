@@ -40,7 +40,12 @@ cp serverSettings.json /opt/sht-iot/
 
 cp -R ./static/ /opt/sht-iot/
 
-npm --prefix /opt/sht-iot/ install /opt/sht-iot/
+if [ -d "/opt/sht-iot/node_modules" ] 
+then
+    echo "Node modules already installed" 
+else
+    npm --prefix /opt/sht-iot/ install /opt/sht-iot/
+fi
 
 
 #after setting up /opt/sht-iot/:
