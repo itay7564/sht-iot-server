@@ -2,7 +2,7 @@
 echo "Shtainberg IOT server installer"
 echo ""
 if [ "$(whoami)" != 'root' ]
-  then
+then
     echo "You must run this script as root. Try running: \"sudo install.sh\" "
     exit
 fi
@@ -19,7 +19,7 @@ apt install curl
 echo "Done."
 echo "Installing NodeJS..."
 apt install npm
-npm install -g npm@latest
+npm list npm -g || npm install -g npm@latest
 npm install -g n
 n lts
 v=$(node -v)
@@ -85,14 +85,20 @@ echo "Testing certificate renewal"
 certbot renew --dry-run --manual-auth-hook /etc/letsencrypt/renewal-hooks/auth/sht-iot-auth.sh
 
 #Self signed ca's
+echo
 echo "Generating self signed CA's for users and devices"
-echo "Please enter a password for the CA's. Write it down in a secure place (not a computer):"
-read -r -s CA_PASS 
-read -r -p "Please Re-enter password:" -s CA_PASS_VERIFY
-if [ "$CA_PASS" != "$CA_PASS_VERIFY" ]; then
-    echo "Passwords do not match! Exiting"
-    exit
-fi
+
+while :
+do
+	echo "Please enter a password for the CA's. Write it down in a secure place (not a computer):"
+	read -r -s CA_PASS 
+	read -r -p "Please Re-enter password:" -s CA_PASS_VERIFY
+	if [ "$CA_PASS" == "$CA_PASS_VERIFY" ]
+	then
+		break
+	fi
+    echo "Passwords do not match! retry"
+done
 
 mkdir "/etc/ssl/private/${DOMAIN}/"
 USERS_CERT_DIR="/etc/ssl/private/${DOMAIN}/users"
@@ -173,9 +179,4 @@ systemctl enable sht-iot-node
 systemctl restart sht-iot-node
 systemctl restart nginx
 echo "Done installing sht-iot server. Cross fingers!"
-
-
-
-
-
 
