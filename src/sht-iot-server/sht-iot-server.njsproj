@@ -30,6 +30,8 @@
     <DebugSymbols>true</DebugSymbols>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="dist\main.js" />
+    <Compile Include="dist\vendors~main.js" />
     <Compile Include="src\index.js">
       <SubType>Code</SubType>
     </Compile>
@@ -50,6 +52,7 @@
     <Compile Include="webpack.config.js" />
     <Content Include=".babelrc" />
     <Content Include="dist\customStyles.css" />
+    <Content Include="dist\hoursImg.png" />
     <Content Include="dist\index.html" />
     <Content Include="dist\material-dashboard.css" />
     <Content Include="package-lock.json" />
