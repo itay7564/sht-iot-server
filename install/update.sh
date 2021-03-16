@@ -14,7 +14,6 @@ read -p "To continue press enter, to exit press Ctrl+C" REPLY
 cp sht-iot.sh /opt/sht-iot/
 cp ../src/sht-iot-server/sht-iot-server.js /opt/sht-iot/
 cp ../src/sht-iot-server/package.json /opt/sht-iot/
-cp ../src/sht-iot-server/serverSettings.json /opt/sht-iot/
 cp -R ../src/sht-iot-server/dist/ /opt/sht-iot/
 
 chmod -R 755 /opt/sht-iot/
