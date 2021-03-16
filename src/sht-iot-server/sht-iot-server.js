@@ -6,11 +6,10 @@ const crypto = require('crypto'); //used only for MD5 encoding
 const io = require('socket.io');
 const http = require('http');
 
-const settings = JSON.parse(fs.readFileSync('serverSettings.json'));
-const userPort = settings.userPort;
-const devicePort = settings.devicePort;
-const deviceUpdatePort = settings.deviceUpdatePort;
-const domainName = settings.domainName;
+const userPort = 22550;
+const devicePort = 22551;
+const deviceUpdatePort = 22552;
+
 const updatesPath = 'updates';
 const eventEmitter = new EventEmitter();
 

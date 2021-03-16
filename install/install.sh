@@ -31,7 +31,6 @@ cp sht-iot.sh /opt/sht-iot/
 ln -s /opt/sht-iot/sht-iot.sh /usr/sbin/sht-iot
 cp ../src/sht-iot-server/sht-iot-server.js /opt/sht-iot/
 cp ../src/sht-iot-server/package.json /opt/sht-iot/
-cp ../src/serverSettings.json /opt/sht-iot/
 
 cp -R ../src/sht-iot-server/dist/ /opt/sht-iot/
 
