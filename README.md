@@ -36,7 +36,7 @@ The server is using a free DDNS service called duckDNS, which allows having a co
 * Clone the repository or download the `dist` folder
 * Extract the files.
 * in the terminal run:
-`cd /path/to/sht-iot-server/dist/`
+`cd /path/to/sht-iot-server/install/`
 `chmod +x install.sh`
 `install.sh` (as a root user).
 * Follow the prompt. this may take several minutes or more depending on your internet connection.
