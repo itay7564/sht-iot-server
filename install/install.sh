@@ -29,17 +29,17 @@ mkdir /opt/sht-iot
 mkdir /opt/sht-iot/updates
 cp sht-iot.sh /opt/sht-iot/
 ln -s /opt/sht-iot/sht-iot.sh /usr/sbin/sht-iot
-cp sht-iot-server.js /opt/sht-iot/
-cp package.json /opt/sht-iot/
-cp serverSettings.json /opt/sht-iot/
+cp ../src/sht-iot-server/sht-iot-server.js /opt/sht-iot/
+cp ../src/sht-iot-server/package.json /opt/sht-iot/
+cp ../src/serverSettings.json /opt/sht-iot/
 
-cp -R ./static/ /opt/sht-iot/
+cp -R ../src/sht-iot-server/dist/ /opt/sht-iot/
 
 if [ -d "/opt/sht-iot/node_modules" ] 
 then
     echo "Node modules already installed" 
 else
-    npm --prefix /opt/sht-iot/ install /opt/sht-iot/
+    npm --prefix /opt/sht-iot/ install /opt/sht-iot/ --only=production
 fi
 
 
