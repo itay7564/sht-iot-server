@@ -8,8 +8,8 @@ fi
 
 echo "You can only run this script after installing sht-iot successfuly. run install.sh to do so."
 echo "Also, verify that this clone of  https://github.com/itay7564/sht-iot-server/ is up-to-date"
-echo "To continue press enter, to exit press Ctrl+C"
-read
+read -p "To continue press enter, to exit press Ctrl+C"
+
 
 cp sht-iot.sh /opt/sht-iot/
 cp ../src/sht-iot-server/sht-iot-server.js /opt/sht-iot/
