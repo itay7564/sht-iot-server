@@ -19,8 +19,8 @@ export function twoDigits(num) {
 }
 
 export function formatTimer(timer) {
-    return hourMinute(timer.startHour, timer.startMinute) +
-        '-' + hourMinute(timer.endHour, timer.endMinute);
+    return hourMinute(timer.sh, timer.sm) +
+        '-' + hourMinute(timer.eh, timer.em);
 }
 
 export function hourMinute(hour, minute) {
@@ -34,9 +34,9 @@ export function numberInRange(start, num, end) {
 
 export function sortTimers(timers) {
     timers.sort((a, b) => { //sort the timers by the time they start (assuming they don't interserct)
-        if (a.startHour * 60 + a.startMinute > b.startHour * 60 + b.startMinute)
+        if (a.sh * 60 + a.sm > b.sh * 60 + b.sm)
             return 1;
-        else if (a.startHour * 60 + a.startMinute < b.startHour * 60 + b.startMinute)
+        else if (a.sh * 60 + a.sm < b.sh * 60 + b.sm)
             return -1;
         else
             return 0;

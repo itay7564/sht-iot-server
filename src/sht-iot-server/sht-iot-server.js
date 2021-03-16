@@ -40,8 +40,8 @@ userIO.on('connection', (client) => {
         if (actionName == 'addTimer') {
             if (verifyTimer(deviceIndex, data)) {
                 let timer = {
-                    startHour: data.startHour, startMinute: data.startMinute,
-                    endHour: data.endHour, endMinute: data.endMinute,
+                    sh: data.sh, sm: data.sm,
+                    eh: data.eh, em: data.em,
                     temporary: data.temporary
                 };
                 eventEmitter.emit('addTimer', deviceID, timer);
@@ -205,25 +205,25 @@ deviceUpdateServer.listen(deviceUpdatePort, function () {
 
 
 function verifyTimer(deviceIndex, timer) {
-    if (timer.startHour === undefined || timer.startMinute === undefined 
-        || timer.endHour === undefined || timer.endMinute === undefined || timer.temporary === undefined) {
+    if (timer.sh === undefined || timer.sm === undefined 
+        || timer.eh === undefined || timer.em === undefined || timer.temporary === undefined) {
         return false;
     }
-    if (!isHour(timer.startHour) || !isHour(timer.endHour)
-        || !isMinute(timer.startMinute) || !isMinute(timer.endMinute) || typeof (timer.temporary) !== "boolean") {
+    if (!isHour(timer.sh) || !isHour(timer.eh)
+        || !isMinute(timer.sm) || !isMinute(timer.em) || typeof (timer.temporary) !== "boolean") {
         return false;
     }
     let existingTimers = devices[deviceIndex].timers;
     //check if this timer overlaps with other timers
-    let startTime = timer.startHour * 60 + timer.startMinute;
-    let endTime = timer.endHour * 60 + timer.endMinute;
+    let startTime = timer.sh * 60 + timer.sm;
+    let endTime = timer.eh * 60 + timer.em;
     if (startTime >= endTime) {
         return false; //start can't be after end
     }
     for (let i = 0; i < existingTimers.length; i++) {
         let existingTimer = existingTimers[i];
-        let existingStart = existingTimer.startHour * 60 + existingTimer.startMinute;
-        let existingEnd = existingTimer.endHour * 60 + existingTimer.endMinute;
+        let existingStart = existingTimer.sh * 60 + existingTimer.sm;
+        let existingEnd = existingTimer.eh * 60 + existingTimer.em;
         if (numberInRange(existingStart, startTime, existingEnd)
             || numberInRange(existingStart, endTime, existingEnd)
             || numberInRange(startTime, existingStart, endTime)
@@ -278,9 +278,9 @@ let devices =
     [
         {
             id: 0, name: "Boiler", state: "On", stateColor: "green", allowTimers: true,
-            timers: [{ id: 0, startHour: 12, startMinute: 0, endHour: 13, endMinute: 0, temporary: true },
-            { id: 1, startHour: 3, startMinute: 0, endHour: 6, endMinute: 0, temporary: false },
-            { id: 2, startHour: 0, startMinute: 0, endHour: 2, endMinute: 0, temporary: false }
+            timers: [{ id: 0, sh: 12, sm: 0, eh: 13, em: 0, temporary: true },
+            { id: 1, sh: 3, sm: 0, eh: 6, em: 0, temporary: false },
+            { id: 2, sh: 0, sm: 0, eh: 2, em: 0, temporary: false }
             ], buttons: []
         },
         {

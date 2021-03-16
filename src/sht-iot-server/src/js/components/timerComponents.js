@@ -23,7 +23,7 @@ export class TimersCard extends React.Component {
     }
 
     handleTimerPreview(timer) {
-        if (timer.endHour === -1 || timer.startHour === -1) {
+        if (timer.eh === -1 || timer.sh === -1) {
             this.setState({
                 previewTimer: null //Do not display preview timer
             });
@@ -220,10 +220,10 @@ class AddTimerRow extends React.Component {
             addButtonDisabled: false,
             previewTimer: {
                 id: -1,
-                startHour: -1,
-                startMinute: -1,
-                endHour: -1,
-                endMinute: -1,
+                sh: -1,
+                sm: -1,
+                eh: -1,
+                em: -1,
                 temporary: false
             }
 
@@ -246,10 +246,10 @@ class AddTimerRow extends React.Component {
             this.setState({
                 previewTimer: {
                     id: -1,
-                    startHour: -1,
-                    startMinute: -1,
-                    endHour: -1,
-                    endMinute: -1,
+                    sh: -1,
+                    sm: -1,
+                    eh: -1,
+                    em: -1,
                     temporary: false
                 }
             });
@@ -263,12 +263,12 @@ class AddTimerRow extends React.Component {
     timeInputChange(event) {
         let timer = this.state.previewTimer; //copy existing values
         if (event.target.name == "startTimeInput") {
-            timer.startHour = Number(event.target.value.split(":")[0]); //gets hour from hh:mm format
-            timer.startMinute = Number(event.target.value.split(":")[1]); //gets minute from hh:mm format
+            timer.sh = Number(event.target.value.split(":")[0]); //gets hour from hh:mm format
+            timer.sm = Number(event.target.value.split(":")[1]); //gets minute from hh:mm format
         }
         else if (event.target.name == "endTimeInput") {
-            timer.endHour = Number(event.target.value.split(":")[0]);
-            timer.endMinute = Number(event.target.value.split(":")[1]);
+            timer.eh = Number(event.target.value.split(":")[0]);
+            timer.em = Number(event.target.value.split(":")[1]);
         }
         else if (event.target.name == "oneTimeCheckInput") {
             timer.temporary = event.target.checked;
@@ -332,8 +332,8 @@ class BadTimerAlert extends React.Component {
 //converts timers to doughnut chart data
 function timersToChartData(timers, previewTimer) {
     let data = { datasets: [{ data: [], backgroundColor: [], labels: [] }] };
-    let firstStart = timers[0].startHour * 60 + timers[0].startMinute;
-    let lastEnd = timers[timers.length - 1].endHour * 60 + timers[timers.length - 1].endMinute;;
+    let firstStart = timers[0].sh * 60 + timers[0].sm;
+    let lastEnd = timers[timers.length - 1].eh * 60 + timers[timers.length - 1].em;;
     let rotateVal = 1440 - lastEnd + firstStart
     data.datasets[0].data.push(rotateVal);
     data.datasets[0].backgroundColor.push('#DDDDDD'); //light gray
@@ -341,8 +341,8 @@ function timersToChartData(timers, previewTimer) {
     let rotateLeft = Math.PI * (-0.5) - ((2 * Math.PI) * ((1440 - lastEnd) / 1440));
     lastEnd = firstStart;
     timers.forEach((timer) => {
-        var startTime = timer.startHour * 60 + timer.startMinute;
-        var endTime = timer.endHour * 60 + timer.endMinute;
+        var startTime = timer.sh * 60 + timer.sm;
+        var endTime = timer.eh * 60 + timer.em;
         data.datasets[0].data.push(startTime - lastEnd); //gaps between timers
         data.datasets[0].backgroundColor.push('#DDDDDD'); //light gray
         data.datasets[0].labels.push(''); //gap between timer, no value
@@ -384,15 +384,15 @@ function clockChartData() {
 }
 
 function validTimer(timers, newTimer) { //assuming existing timers don't overlap
-    let newStart = newTimer.startHour * 60 + newTimer.startMinute;
-    let newEnd = newTimer.endHour * 60 + newTimer.endMinute;
+    let newStart = newTimer.sh * 60 + newTimer.sm;
+    let newEnd = newTimer.eh * 60 + newTimer.em;
     if (newStart >= newEnd) {
         return false; //start can't be after end
     }
     for (let i = 0; i < timers.length; i++) {
         let existingTimer = timers[i];
-        let existingStart = existingTimer.startHour * 60 + existingTimer.startMinute;
-        let existingEnd = existingTimer.endHour * 60 + existingTimer.endMinute;
+        let existingStart = existingTimer.sh * 60 + existingTimer.sm;
+        let existingEnd = existingTimer.eh * 60 + existingTimer.em;
         if (numberInRange(existingStart, newStart, existingEnd)
             || numberInRange(existingStart, newEnd, existingEnd)
             || numberInRange(newStart, existingStart, newEnd)
