@@ -41,7 +41,7 @@ userIO.on('connection', (client) => {
                 let timer = {
                     sh: data.sh, sm: data.sm,
                     eh: data.eh, em: data.em,
-                    temporary: data.temporary
+                    temp: data.temp
                 };
                 eventEmitter.emit('addTimer', deviceID, timer);
             }
@@ -205,11 +205,11 @@ deviceUpdateServer.listen(deviceUpdatePort, function () {
 
 function verifyTimer(deviceIndex, timer) {
     if (timer.sh === undefined || timer.sm === undefined 
-        || timer.eh === undefined || timer.em === undefined || timer.temporary === undefined) {
+        || timer.eh === undefined || timer.em === undefined || timer.temp === undefined) {
         return false;
     }
     if (!isHour(timer.sh) || !isHour(timer.eh)
-        || !isMinute(timer.sm) || !isMinute(timer.em) || typeof (timer.temporary) !== "boolean") {
+        || !isMinute(timer.sm) || !isMinute(timer.em) || typeof (timer.temp) !== "boolean") {
         return false;
     }
     let existingTimers = devices[deviceIndex].timers;
@@ -277,9 +277,9 @@ let devices =
     [
         {
             id: 0, name: "Boiler", state: "On", stateColor: "green", allowTimers: true,
-            timers: [{ id: 0, sh: 12, sm: 0, eh: 13, em: 0, temporary: true },
-            { id: 1, sh: 3, sm: 0, eh: 6, em: 0, temporary: false },
-            { id: 2, sh: 0, sm: 0, eh: 2, em: 0, temporary: false }
+            timers: [{ id: 0, sh: 12, sm: 0, eh: 13, em: 0, temp: true },
+            { id: 1, sh: 3, sm: 0, eh: 6, em: 0, temp: false },
+            { id: 2, sh: 0, sm: 0, eh: 2, em: 0, temp: false }
             ], buttons: []
         },
         {

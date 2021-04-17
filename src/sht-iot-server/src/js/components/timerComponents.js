@@ -191,7 +191,7 @@ class TimerRow extends React.Component {
         let timer = this.props.timer;
         let timeStr = formatTimer(timer);
         let temp = <td className="text-danger">No</td>;
-        if (timer.temporary == true) {
+        if (timer.temp == true) {
             temp = <td className="text-warning">Yes</td>;
         }
         let selected = "";
@@ -224,7 +224,7 @@ class AddTimerRow extends React.Component {
                 sm: -1,
                 eh: -1,
                 em: -1,
-                temporary: false
+                temp: false
             }
 
         };
@@ -250,7 +250,7 @@ class AddTimerRow extends React.Component {
                     sm: -1,
                     eh: -1,
                     em: -1,
-                    temporary: false
+                    temp: false
                 }
             });
 
@@ -271,7 +271,7 @@ class AddTimerRow extends React.Component {
             timer.em = Number(event.target.value.split(":")[1]);
         }
         else if (event.target.name == "oneTimeCheckInput") {
-            timer.temporary = event.target.checked;
+            timer.temp = event.target.checked;
         }
         this.setState({ previewTimer: timer });
         this.props.handleTimerPreview(timer); //send state up to display it in the clock
@@ -350,7 +350,7 @@ function timersToChartData(timers, previewTimer) {
         if (timer.id === -1) { //this is a timer preview
             data.datasets[0].backgroundColor.push('#4caf50'); //green
         }
-        else if (timer.temporary) {
+        else if (timer.temp) {
             data.datasets[0].backgroundColor.push('#ff9800'); //orange
         }
         else {
