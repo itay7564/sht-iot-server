@@ -255,7 +255,7 @@ function verifyRemoveTimer(deviceIndex, data) {
 function verifyButtonPress(deviceIndex, data) {
     if (data.id === undefined || !Number.isInteger(data.id))
         return false;
-    if (data.id < 0 || data.id >= devices[deviceIndex].buttons.length)
+    if (data.id < 0)
         return false;
 
     return true;
