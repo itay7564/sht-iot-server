@@ -130,6 +130,8 @@ echo "Please enter ports for the server. I recommend using any ports from 10000 
 echo "For more information, visit https://en.wikipedia.org/wiki/List_of_TCP_and_UDP_port_numbers"
 echo -e "Web user interface port (to be part of the websites url):\c"
 read -r USER_PORT
+echo -e "User port (no user cert)\c"
+read -r USER_PORT_NO_CERT
 echo -e "Device port:\c"
 read -r DEVICE_PORT
 echo -e "Device Update port:\c"
@@ -146,6 +148,7 @@ sed -e "s/\${DOMAIN}/${DOMAIN}/" \
 	-e "s/\${USER_PORT}/${USER_PORT}/" \
 	-e "s/\${DEVICE_PORT}/${DEVICE_PORT}/" \
 	-e "s/\${DEVICE_UPDATE_PORT}/${DEVICE_UPDATE_PORT}/" \
+	-e "s/\${USER_PORT_NO_CERT}/${USER_PORT_NO_CERT}/" \
 	nginx-template.conf > /etc/nginx/sites-available/sht-iot-server.conf
 
 ln -s /etc/nginx/sites-available/sht-iot-server.conf /etc/nginx/sites-enabled/sht-iot-server.conf
